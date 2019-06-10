@@ -18,9 +18,9 @@ void setup() {
 }
 
 void draw() {
-    for (Bug c : bugs) {
-        c.update();
-        c.display();
+    for (Bug b : bugs) {
+        b.update();
+        b.display();
     }
     // saveFrame("renders/iso####.png");
 }

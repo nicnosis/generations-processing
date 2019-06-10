@@ -1,11 +1,27 @@
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class s05box extends PApplet {
+
 Box[] boxes;
 int N = 50;
 float t;
 
-void setup() {
+public void setup() {
     //display stuff
-    size(1080, 1080);
-    smooth(8);
+    
+    
     colorMode(RGB, 100);
 
     strokeWeight(1);
@@ -20,7 +36,7 @@ void setup() {
     }
 }
 
-void draw() {
+public void draw() {
     for (Box b : boxes) {
         if (b.life >= 0) {
 
@@ -56,15 +72,15 @@ class Box {
         twist = random(100);
         scl = 1;
     }
-    void update() {
-        xoff += 0.01;
-        twist += 0.01;
+    public void update() {
+        xoff += 0.01f;
+        twist += 0.01f;
         xjerk = map(noise(xoff), 0, 1, -20, 20);
         y--;
-        scl += 0.01;
+        scl += 0.01f;
         life--;
     }
-    void display() {
+    public void display() {
         push();
         rotate(PI/6);
         translate(x + xjerk, y);
@@ -74,4 +90,14 @@ class Box {
         pop();
     }
 
+}
+  public void settings() {  size(1080, 1080);  smooth(8); }
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "s05box" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
+    }
+  }
 }
