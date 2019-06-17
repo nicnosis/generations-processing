@@ -16,7 +16,7 @@ void draw() {
 
     line(0, 0, width, 0);
     for (int x = 0; x < width; x+= 10) {
-        for (float scale = 1; scale < 6; scale += 0.5) {
+        for (float scale = 1; scale < 7; scale += 0.5) {
             push();
 
             scale(scale, scale);
